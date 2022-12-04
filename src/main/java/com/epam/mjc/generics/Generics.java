@@ -1,26 +1,30 @@
 package com.epam.mjc.generics;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Generics {
 
     //TODO: Refactor Method-1
-    public List boxingMethod(String name) {
-        List firstList = new ArrayList<>();
+    public List<List<String>> boxingMethod(String name) {
+        List<String> firstList = new ArrayList<>();
         firstList.add(name);
-        List secondList = new ArrayList<>();
+        List<List<String>> secondList = new ArrayList<>();
         secondList.add(firstList);
         return secondList;
     }
 
     //TODO: Refactor Method-2
-    public Object genericMethod(Object data) {
-        return data;
+    public <T> T genericMethod(Object data) {
+        if (data == null) return null;
+        else {;
+            return (T) data;
+        }
     }
 
     //TODO: Refactor Method-3
-    public void cloneMethod(List consumer, List producer) {
+    public <T> void cloneMethod(List<? super T> consumer, List<? extends T> producer) {
         consumer.addAll(producer);
     }
 
